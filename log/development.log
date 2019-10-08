@@ -1,0 +1,324 @@
+Started GET "/top" for 10.0.2.2 at 2019-10-07 08:55:18 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RootController#top as HTML
+  Rendering root/top.html.erb within layouts/application
+  Rendered root/top.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 2276ms (Views: 2252.8ms | ActiveRecord: 0.0ms)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:9
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateLists (20191008022153)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "lists" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20191008022153_create_lists.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191008022153"]]
+  ↳ bin/rails:9
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (1.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (5.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-10-08 02:32:45.561996"], ["updated_at", "2019-10-08 02:32:45.561996"]]
+  ↳ bin/rails:9
+  [1m[35m (3.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to AddNameToLists (20191008023718)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (3.4ms)[0m  [1m[35mALTER TABLE "lists" ADD "name" varchar[0m
+  ↳ db/migrate/20191008023718_add_name_to_lists.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191008023718"]]
+  ↳ bin/rails:9
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (2.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (3.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to RemoveNameFromLists (20191008023959)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20191008023959_remove_name_from_lists.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "alists" ("id" integer NOT NULL PRIMARY KEY, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "name" varchar DEFAULT NULL)[0m
+  ↳ db/migrate/20191008023959_remove_name_from_lists.rb:3
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "alists" ("id","created_at","updated_at","name")
+                     SELECT "id","created_at","updated_at","name" FROM "lists"[0m
+  ↳ db/migrate/20191008023959_remove_name_from_lists.rb:3
+  [1m[35m (3.7ms)[0m  [1m[35mDROP TABLE "lists"[0m
+  ↳ db/migrate/20191008023959_remove_name_from_lists.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "lists" ("id" integer NOT NULL PRIMARY KEY, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20191008023959_remove_name_from_lists.rb:3
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "lists" ("id","created_at","updated_at")
+                     SELECT "id","created_at","updated_at" FROM "alists"[0m
+  ↳ db/migrate/20191008023959_remove_name_from_lists.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "alists"[0m
+  ↳ db/migrate/20191008023959_remove_name_from_lists.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (2.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191008023959"]]
+  ↳ bin/rails:9
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/todolists/new" for 10.0.2.2 at 2019-10-08 05:18:32 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by TodolistsController#new as HTML
+  Rendering todolists/new.html.erb within layouts/application
+  Rendered todolists/new.html.erb within layouts/application (35.3ms)
+Completed 500 Internal Server Error in 172ms (ActiveRecord: 10.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `title' for #<List id: nil, created_at: nil, updated_at: nil>):
+    2: <%= form_for(@list,url:'/todolists') do |f| %>
+    3: 
+    4: 	<h4>タイトル</h4>
+    5: 	<%= f.text_field :title %>
+    6: 
+    7: 	<h4>本文</h4>
+    8: 	<%= f.text_area :body %>
+  
+app/views/todolists/new.html.erb:5:in `block in _app_views_todolists_new_html_erb___1967513173003219006_47104951307540'
+app/views/todolists/new.html.erb:2:in `_app_views_todolists_new_html_erb___1967513173003219006_47104951307540'
+Started GET "/todolists/new" for 10.0.2.2 at 2019-10-08 05:28:57 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TodolistsController#new as HTML
+  Rendering todolists/new.html.erb within layouts/application
+  Rendered todolists/new.html.erb within layouts/application (19.7ms)
+Completed 500 Internal Server Error in 147ms (ActiveRecord: 20.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `title' for #<List id: nil, created_at: nil, updated_at: nil>):
+    2: <%= form_for(@list,url:'/todolists') do |f| %>
+    3: 
+    4: 	<h4>タイトル</h4>
+    5: 	<%= f.text_field :title %>
+    6: 
+    7: 	<h4>本文</h4>
+    8: 	<%= f.text_area :body %>
+  
+app/views/todolists/new.html.erb:5:in `block in _app_views_todolists_new_html_erb___1967513173003219006_47104958278920'
+app/views/todolists/new.html.erb:2:in `_app_views_todolists_new_html_erb___1967513173003219006_47104958278920'
+Started GET "/todolists" for 10.0.2.2 at 2019-10-08 05:35:41 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/todolists"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/top" for 10.0.2.2 at 2019-10-08 05:35:54 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RootController#top as HTML
+  Rendering root/top.html.erb within layouts/application
+  Rendered root/top.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 1233ms (Views: 1200.3ms | ActiveRecord: 0.0ms)
+
+
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (2.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/todolists/new" for 10.0.2.2 at 2019-10-08 05:38:12 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by TodolistsController#new as HTML
+  Rendering todolists/new.html.erb within layouts/application
+  Rendered todolists/new.html.erb within layouts/application (20.5ms)
+Completed 500 Internal Server Error in 111ms (ActiveRecord: 7.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `title' for #<List id: nil, created_at: nil, updated_at: nil>):
+    2: <%= form_for(@list,url:'/todolists') do |f| %>
+    3: 
+    4: 	<h4>タイトル</h4>
+    5: 	<%= f.text_field :title %>
+    6: 
+    7: 	<h4>本文</h4>
+    8: 	<%= f.text_area :body %>
+  
+app/views/todolists/new.html.erb:5:in `block in _app_views_todolists_new_html_erb___4218674367404807809_47075679167300'
+app/views/todolists/new.html.erb:2:in `_app_views_todolists_new_html_erb___4218674367404807809_47075679167300'
+Started GET "/todolists/new" for 10.0.2.2 at 2019-10-08 05:42:00 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by TodolistsController#new as HTML
+  Rendering todolists/new.html.erb within layouts/application
+  Rendered todolists/new.html.erb within layouts/application (33.3ms)
+Completed 500 Internal Server Error in 185ms (ActiveRecord: 9.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `title' for #<List id: nil, created_at: nil, updated_at: nil>):
+    2: <%= form_for(@list,url:'/todolists') do |f| %>
+    3: 
+    4: 	<h4>タイトル</h4>
+    5: 	<%= f.text_field :title %>
+    6: 
+    7: 	<h4>本文</h4>
+    8: 	<%= f.text_area :body %>
+  
+app/views/todolists/new.html.erb:5:in `block in _app_views_todolists_new_html_erb___4332625138369044766_46921148942200'
+app/views/todolists/new.html.erb:2:in `_app_views_todolists_new_html_erb___4332625138369044766_46921148942200'
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:9
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateLists (20191008022153)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE TABLE "lists" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20191008022153_create_lists.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191008022153"]]
+  ↳ bin/rails:9
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to AddNameToLists (20191008023718)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (3.1ms)[0m  [1m[35mALTER TABLE "lists" ADD "name" varchar[0m
+  ↳ db/migrate/20191008023718_add_name_to_lists.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191008023718"]]
+  ↳ bin/rails:9
+  [1m[35m (2.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to RemoveNameFromLists (20191008023959)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "alists" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "body" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "name" varchar DEFAULT NULL)[0m
+  ↳ db/migrate/20191008023959_remove_name_from_lists.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "alists" ("id","title","body","created_at","updated_at","name")
+                     SELECT "id","title","body","created_at","updated_at","name" FROM "lists"[0m
+  ↳ db/migrate/20191008023959_remove_name_from_lists.rb:3
+  [1m[35m (2.7ms)[0m  [1m[35mDROP TABLE "lists"[0m
+  ↳ db/migrate/20191008023959_remove_name_from_lists.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "lists" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "body" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20191008023959_remove_name_from_lists.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "lists" ("id","title","body","created_at","updated_at")
+                     SELECT "id","title","body","created_at","updated_at" FROM "alists"[0m
+  ↳ db/migrate/20191008023959_remove_name_from_lists.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "alists"[0m
+  ↳ db/migrate/20191008023959_remove_name_from_lists.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191008023959"]]
+  ↳ bin/rails:9
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (5.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-10-08 05:47:10.955694"], ["updated_at", "2019-10-08 05:47:10.955694"]]
+  ↳ bin/rails:9
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/todolists/new" for 10.0.2.2 at 2019-10-08 05:47:50 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by TodolistsController#new as HTML
+  Rendering todolists/new.html.erb within layouts/application
+  Rendered todolists/new.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 847ms (Views: 797.2ms | ActiveRecord: 8.4ms)
+
+
+Started POST "/todolists" for 10.0.2.2 at 2019-10-08 05:50:21 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TodolistsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"we+DJPI9g+8+RbX/HEwJITBuf0b+yBTGj5aRnpPg1WFULEIDWT5jR9mwJ5Um89QzFPGNaN6pEPmVVJznLJXi6A==", "list"=>{"title"=>"rails勉強中", "body"=>"投稿機能を作る"}, "commit"=>"投稿"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todolists_controller.rb:8
+  [1m[36mList Create (6.3ms)[0m  [1m[32mINSERT INTO "lists" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "rails勉強中"], ["body", "投稿機能を作る"], ["created_at", "2019-10-08 05:50:21.285577"], ["updated_at", "2019-10-08 05:50:21.285577"]]
+  ↳ app/controllers/todolists_controller.rb:8
+  [1m[35m (4.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todolists_controller.rb:8
+Redirected to http://localhost:3000/top
+Completed 302 Found in 23ms (ActiveRecord: 10.8ms)
+
+
+Started GET "/top" for 10.0.2.2 at 2019-10-08 05:50:21 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RootController#top as HTML
+  Rendering root/top.html.erb within layouts/application
+  Rendered root/top.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 190ms (Views: 167.0ms | ActiveRecord: 0.0ms)
+
+
